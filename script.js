@@ -4,7 +4,7 @@ const random = (num) => Math.floor(Math.random() * num);
 // Object containing messages
 const possibleFutures = {
 	nearFuture: [
-		"you will be attacked by a gang of rabid horses",
+		"you will be attacked by a gang of moths",
 		"a winning lottery ticket will fall onto your lap",
 		"your local vicar declares that you are the messiah",
 	],
@@ -16,7 +16,7 @@ const possibleFutures = {
 	onlyIf: [
 		"you fix your credit score",
 		"the moon is aligned with your chakras",
-		"you hire the author of this script as a junior developer",
+		"you DM me a picture of your cat",
 	],
 };
 
@@ -40,7 +40,7 @@ for (let item of Object.keys(possibleFutures)) {
 			break;
 
 		case "onlyIf":
-			theFuture.push(`But only if ${possibleFutures[item][randomIndex]}.`);
+			theFuture.push(`But only if...${possibleFutures[item][randomIndex]}.`);
 			break;
 		// Only prints if error occurs
 		default:
@@ -54,6 +54,28 @@ const printFuture = (arr) => arr.join("\n");
 
 //log message to console
 console.log(printFuture(theFuture));
+/* prettier-ignore */
+console.log(`
+                     .---.
+                   .'_..._'.
+                  .''_   _''.
+                 .' :  '  : '.
+                .'_.-'_~_'-._'.
+               .'(     '     )'.
+              .'  \\ \\     / /  '.
+             .'    \\ \\   / /    '.
+       ____________'''\` '\`\`\`____________
+      /              .''.               \\
+     /              (  \` )               \\
+    /               .'..'.                \\
+   /                '----'                 \\
+  /_________________________________________\\
+    \\  /'--'                       '--'\\  /
+     ||                                 ||
+     ||                                 ||
+    _||_                               _||_
+    '--'                               '--'  
+`)
 
 // TODO
 /*
