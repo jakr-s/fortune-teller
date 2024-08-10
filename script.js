@@ -1,7 +1,7 @@
-// Get random number function
-const random = (num) => Math.floor(Math.random() * num);
+// Function to generate a random integer up to a given number
+const getRandomIndex = (num) => Math.floor(Math.random() * num);
 
-// Object containing messages
+// Object containing possible messages for the future
 const possibleFutures = {
 	nearFuture: [
 		"you will be attacked by a gang of moths",
@@ -11,7 +11,7 @@ const possibleFutures = {
 	resultsIn: [
 		"you learn the true meaning of friendship",
 		"wacky hijinks ensue",
-		"you open a succesful themed restaraunt",
+		"you open a successful themed restaurant",
 	],
 	onlyIf: [
 		"you fix your credit score",
@@ -20,40 +20,30 @@ const possibleFutures = {
 	],
 };
 
-// Empty array to push messages to
-const theFuture = [];
+// Generate a future prediction
+const generatePrediction = () => {
+	return Object.keys(possibleFutures)
+		.map((key) => {
+			const randomMessage =
+				possibleFutures[key][getRandomIndex(possibleFutures[key].length)];
+			switch (key) {
+				case "nearFuture":
+					return `In the near future, ${randomMessage}.`;
+				case "resultsIn":
+					return `And as a result, ${randomMessage}.`;
+				case "onlyIf":
+					return `But only if... ${randomMessage}.`;
+				default:
+					return "An evil spirit is interfering with my script.";
+			}
+		})
+		.join("\n");
+};
 
-// Iterate over object
-for (let item of Object.keys(possibleFutures)) {
-	// Get random index of object array
-	let randomIndex = random(possibleFutures[item].length);
-	// Push random sentence to empty array
-	switch (item) {
-		case "nearFuture":
-			theFuture.push(
-				`In the near future, ${possibleFutures[item][randomIndex]}.`
-			);
-			break;
+// Generate and log the future prediction
+const theFuture = generatePrediction();
+console.log(theFuture);
 
-		case "resultsIn":
-			theFuture.push(`And as a result, ${possibleFutures[item][randomIndex]}.`);
-			break;
-
-		case "onlyIf":
-			theFuture.push(`But only if...${possibleFutures[item][randomIndex]}.`);
-			break;
-		// Only prints if error occurs
-		default:
-			theFuture.push("An evil spirit is interfering with my script");
-			break;
-	}
-}
-
-// Joins message array with line break
-const printFuture = (arr) => arr.join("\n");
-
-//log message to console
-console.log(printFuture(theFuture));
 /* prettier-ignore */
 console.log(`
                      .---.
